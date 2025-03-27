@@ -34,7 +34,9 @@ export default function AboutMorent() {
 
       <div className="mt-8 text-xl font-semibold text-blue-600 flex items-center gap-2">
         MORENT – your freedom to move! <FaRocket className="text-orange-500" />
+        <p>sdsdsd</p>
       </div>
     </div>
   );
 }
+ 
