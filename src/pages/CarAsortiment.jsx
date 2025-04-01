@@ -70,19 +70,19 @@ const CarAsortiment = ({ favorites, setFavorites }) => {
   };
 
   return (
-    <div className="min-h-screen  pb-30 bg-gray-100 relative">
+    <div className="min-h-screen overflow-x-hidden pb-30 bg-gray-100 relative">
       <div className="w-screen overflow-hidden ">
         <TickerSlider />
       </div>
       <div className="relative z-10">
         <Twoadds />
-        <h1 className="text-3xl font-bold text-gray-900 pl-6">
+        <h1 className="text-3xl font-bold text-gray-900 pl-6 ">
           Car Collection
         </h1>
 
-        <div className="flex">
+        <div className="flex flex-col lg:flex-row gap-6">
           {/* Filter */}
-          <aside className="w-100 h-100 p-4 bg-white rounded-lg shadow-md">
+          <aside className="w-full lg:w-1/4 p-4 bg-white rounded-lg shadow-md">
             <h3 className="font-bold text-xl mb-3 text-blue-500">Filter</h3>
             <div className="mb-4">
               <h4 className="font-semibold text-gray-700">Type</h4>
@@ -123,7 +123,7 @@ const CarAsortiment = ({ favorites, setFavorites }) => {
           </aside>
 
           {/* Car List */}
-          <section className="w-3/4 p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <section className="w-full lg:w-3/4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {loading ? (
               <p className="text-center text-gray-500 col-span-3">
                 Loading cars...
@@ -151,7 +151,7 @@ const CarAsortiment = ({ favorites, setFavorites }) => {
                   <img
                     src={car.images?.[0] || "fallback-image.jpg"}
                     alt={car.name || "Unknown car"}
-                    className="w-full h-40 rounded-md mt-2"
+                    className="w-full h-40 rounded-md mt-2 "
                   />
                   <h3 className="text-lg font-bold mt-2">
                     {car.name || "Unknown car"}

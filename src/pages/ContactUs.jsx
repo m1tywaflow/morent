@@ -361,10 +361,10 @@ const Contact = () => {
     setLoading(true);
     try {
       await emailjs.send(
-        "service_mp7b0mx",   // Замени на свой Service ID
-        "template_sipz4bs",  // Замени на свой Template ID
+        "service_mp7b0mx",   
+        "template_sipz4bs",  
         formData,
-        "vnd2W1SFLNPKC6mIt"    // Замени на свой Public Key
+        "vnd2W1SFLNPKC6mIt"    
       );
       setIsSubmitted(true);
       setFormData({ name: "", email: "", message: "" });

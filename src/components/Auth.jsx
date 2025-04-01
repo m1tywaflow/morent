@@ -79,9 +79,27 @@ const Auth = () => {
 
   return (
     <div
-      className="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-400 to-pink-500"
+      className="flex items-center justify-center min-h-screen bg-gradient-to-r gap-10  from-purple-400 to-pink-500"
       style={{ backgroundImage: `url(${bgAuth})` }}
     >
+      <div className="bg-gray-400 w-200 p-30 h-150  rounded-2xl">
+        <h1 className="text-7xl font-extrabold text-gray-800 text-center mb-6">
+          Hello!
+        </h1>
+        <h1 className="text-4xl font-bold text-gray-800 text-center mb-4">
+          Ready to Hit the Road?
+        </h1>
+        <p className="text-xl text-center mb-6 pt-6  text-gray-800 leading-relaxed">
+          Rent a car in just a few clicks and enjoy the freedom to travel. We
+          offer a wide range of vehicles for any purpose – from city rides to
+          long-distance journeys. Join thousands of satisfied customers!
+        </p>
+        <p className="text-2xl text-center text-amber-950 font-medium pt-20">
+          Log in or sign up now to start your journey today!
+        </p>
+        
+      </div>
+    
       <div className="bg-gray-400 p-8 rounded-2xl  shadow-lg w-96 text-center relative">
         <h2 className="text-3xl font-bold text-amber-950 mb-4 ">MORENT</h2>
         {user ? (
@@ -130,16 +148,17 @@ const Auth = () => {
             </div>
             <button
               onClick={login}
-              className="w-full bg-indigo-500 text-white px-4 py-2 rounded-lg mb-2 flex items-center justify-center"
+              className="w-full bg-indigo-500 text-white px-4 py-2 rounded-lg mb-2 flex items-center justify-center transition duration-300 ease-in-out transform hover:scale-105 hover:bg-indigo-600"
             >
               <FaSignInAlt className="mr-2" /> Login
             </button>
             <button
               onClick={register}
-              className="w-full bg-green-500 text-white px-4 py-2 rounded-lg flex items-center justify-center"
+              className="w-full bg-green-500 text-white px-4 py-2 rounded-lg flex items-center justify-center transition duration-300 ease-in-out transform hover:scale-105 hover:bg-green-600"
             >
               <FaUserPlus className="mr-2" /> Register
             </button>
+
             {error && (
               <p className="text-red-500 mt-2">
                 {error.includes("auth/email-already-in-use")

@@ -21,10 +21,10 @@ import HowItWorks from "./pages/HowItWorks";
 import Events from "./pages/Events";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Help from "./pages/Help";
+import ScrollToTop from "./components/ScrollToTop";
 function Layout({ children }) {
   const location = useLocation();
   const hideLayout = location.pathname === "/";
-
   return (
     <>
       {!hideLayout && <HeaderLog />}
@@ -50,9 +50,10 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Layout>
         <Routes>
-          <Route path="/" element={<Auth />} />
+          <Route path="/" element={<Auth />}  />
           <Route
             path="/home"
             element={
@@ -64,7 +65,10 @@ function App() {
           <Route
             path="/rent"
             element={
-              <CarAsortiment favorites={favorites} setFavorites={setFavorites} />
+              <CarAsortiment
+                favorites={favorites}
+                setFavorites={setFavorites}
+              />
             }
           />
           <Route path="/about" element={<About />} />
@@ -77,9 +81,9 @@ function App() {
           <Route path="/settings" element={<Settings />} />
           <Route path="/partnership" element={<Partnership />} />
           <Route path="/how-it-works" element={<HowItWorks />} />
-          <Route path="/events" element={<Events/>} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
-          <Route path="/help" element={<Help/>} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/help" element={<Help />} />
         </Routes>
       </Layout>
     </BrowserRouter>
