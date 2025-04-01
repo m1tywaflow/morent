@@ -362,7 +362,7 @@ const Payment = () => {
           <img
             src={car.images[0]}
             alt={car.name}
-            className="w-full md:w-1/1 h-auto rounded-lg object-cover"
+            className="w-full md:w-110 h-auto rounded-lg object-cover"
           />
           <div className="flex-1">
             <h3 className="text-xl md:text-2xl font-bold">{car.name}</h3>
