@@ -82,7 +82,7 @@ const Auth = () => {
       className="flex items-center justify-center min-h-screen bg-gradient-to-r gap-10  from-purple-400 to-pink-500"
       style={{ backgroundImage: `url(${bgAuth})` }}
     >
-      <div className="bg-gray-400 w-200 p-30 h-150  rounded-2xl">
+      <div className="bg-gray-400 w-200 p-30 h-150 rounded-2xl hidden md:block">
         <h1 className="text-7xl font-extrabold text-gray-800 text-center mb-6">
           Hello!
         </h1>

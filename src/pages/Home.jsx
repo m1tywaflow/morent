@@ -36,10 +36,10 @@
 //           </a>
 //         </div>
 //       </div>
-      
+
 //       <PartnersSection/>
 //       <TestimonialsSlider />
-      
+
 //       <TickerSlider />
 //       {/* Section for carfull Image */}
 //       <div className="relative w-full">
@@ -56,7 +56,7 @@
 //           </a>
 //         </div>
 //       </div>
-      
+
 //       <FAQPage />
 
 //       {/* Back to Top Button */}
@@ -96,9 +96,14 @@ const Home = () => {
   const topRef = useRef(null); // Create a ref to the top of the page
 
   const scrollToTop = () => {
-    if (topRef.current) {
-      topRef.current.scrollIntoView({ behavior: "smooth" }); // Smooth scroll to the top
-    }
+    const scrollStep = -window.scrollY / 70;
+    const scrollAnimation = () => {
+      if (window.scrollY > 0) {
+        window.scrollBy(0, scrollStep);
+        requestAnimationFrame(scrollAnimation);
+      }
+    };
+    requestAnimationFrame(scrollAnimation);
   };
 
   return (
@@ -114,7 +119,7 @@ const Home = () => {
           </h2>
           <a
             href="/rent"
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition"
+            className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 hover:bg-indigo-600"
           >
             Rent the car
           </a>
@@ -134,7 +139,7 @@ const Home = () => {
           </h2>
           <a
             href="/rent"
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition"
+            className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 hover:bg-indigo-600"
           >
             Rent the car
           </a>
@@ -146,7 +151,7 @@ const Home = () => {
       {/* Back to Top Button */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-10 h-10 w-10 right-10 bg-black text-white rounded-full shadow-md hover:bg-blue-700 transition"
+        className="fixed bottom-10 right-10 h-10 w-10 bg-black text-white rounded-full shadow-md hover:bg-blue-700 transition"
         aria-label="Scroll to top"
       >
         ↑
