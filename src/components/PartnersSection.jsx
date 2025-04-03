@@ -2,7 +2,7 @@ import React from "react";
 import lv from "../assets/lv.jpg";
 import prada from "../assets/prada.jpg";
 import bmw from "../assets/bmw.jpg";
-import sony from "../assets/sony.jpg";
+import sony from "../assets/sony.jpg"
 
 const PartnersSection = () => {
   const partners = [
