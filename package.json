@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node server.js",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -15,6 +17,7 @@
     "@studio-freight/lenis": "^1.0.42",
     "class-variance-authority": "^0.7.1",
     "embla-carousel-react": "^8.5.2",
+    "express": "^5.1.0",
     "firebase": "^11.5.0",
     "framer-motion": "^12.5.0",
     "leaflet": "^1.9.4",
@@ -26,6 +29,7 @@
     "react-leaflet": "^5.0.0",
     "react-router-dom": "^7.3.0",
     "react-slick": "^0.30.3",
+    "serve-static": "^2.2.0",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
