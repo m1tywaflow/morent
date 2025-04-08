@@ -47,5 +47,9 @@
     "postcss": "^8.5.3",
     "tailwindcss": "^4.0.15",
     "vite": "^6.2.0"
+  },
+  "engines": {
+    "node": "14.x",
+    "npm": "6.x"
   }
 }
