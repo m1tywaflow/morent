@@ -6,15 +6,15 @@ import { useNavigate } from "react-router-dom";
 const Settings = () => {
   const auth = getAuth();
   const navigate = useNavigate();
-  const [user, setUser ] = useState(null);
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser ) => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setLoading(true);
       setTimeout(() => {
-        setUser (currentUser );
+        setUser(currentUser);
         setLoading(false);
       }, 1000);
     });

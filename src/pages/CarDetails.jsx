@@ -166,28 +166,6 @@ const CarDetails = () => {
   return (
     <div className="min-h-screen p-6 pt-16 bg-gray-100 flex flex-col items-center">
       <div className="bg-white rounded-lg shadow-lg p-6 w-full flex flex-col md:flex-row">
-        {/* Gallery */}
-        {/* <div className="grid grid-cols-3 gap-2">
-          <img
-            src={car.images[0]}
-            alt={`${car.name} image 1`}
-            className="w-full h-40 rounded-lg pr-80 cursor-pointer col-span-3"
-            onClick={() => openModal(car.images[0])} // Open modal on click
-          />
-          <img
-            src={car.images[1]}
-            alt={`${car.name} image 2`}
-            className="w-full h-40 rounded-lg cursor-pointer col-span-1"
-            onClick={() => openModal(car.images[1])}
-          />
-          <img
-            src={car.images[2]}
-            alt={`${car.name} image 3`}
-            loading="lazy"
-            className="w-full h-40 rounded-lg cursor-pointer col-span-1"
-            onClick={() => openModal(car.images[2])}
-          />
-        </div> */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
           <img
             src={car.images[0]}
@@ -210,46 +188,6 @@ const CarDetails = () => {
           />
         </div>
 
-        {/* Car Information */}
-        {/* <div className="md:w-1/2 md:pl-6">
-          <div className="flex justify-between items-start">
-            <h1 className="text-3xl font-bold text-blue-600">{car.name}</h1>
-          </div>
-          <p className="text-gray-600 text-xl mb-15">{car.description}</p>
-
-          <div className="flex justify-between text-gray-600 mt-4">
-            <span className="flex items-center gap-1">
-              <FaCogs /> {car.gear}
-            </span>
-            <span className="flex items-center gap-1">
-              <FaGasPump /> {car.fuel}
-            </span>
-            <span className="flex items-center gap-1">
-              <FaUsers /> {car.seats}
-            </span>
-          </div>
-          <div className="mt-4">
-            <h3 className="text-lg font-semibold">Features:</h3>
-            <ul className="list-disc list-inside text-gray-600">
-              {car.features.map((feature, index) => (
-                <li key={index}>{feature}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="flex justify-between items-center mt-4">
-            <p className="text-xl font-semibold text-blue-600">
-              {car.price} / day
-            </p>
-          </div>
-
-          <button
-            className="bg-blue-500 text-white px-4 py-2 rounded-lg w-full mt-4 hover:bg-blue-600 transition"
-            onClick={() => navigate(`/payment/${car.id}`)} // Переход на страницу оплаты
-          >
-            Proceed to payment
-          </button>
-        </div> */}
         <div className="w-full md:w-1/2 md:pl-6">
           <div className="flex flex-col justify-start">
             <h1 className="text-2xl md:text-3xl font-bold text-blue-600">
@@ -296,44 +234,6 @@ const CarDetails = () => {
         </div>
       </div>
       <CarRentalRules />
-
-      {/* Comments Section */}
-      {/* <div className="bg-white rounded-lg shadow-lg p-6 w-full mt-6 pt-30 pb-30">
-        <h2 className="text-2xl font-semibold mb-4">Customer Reviews</h2>
-        <AnimatePresence>
-          {shuffledComments
-            .slice(0, showAllComments ? shuffledComments.length : 3)
-            .map((comment) => (
-              <motion.div
-                key={comment.id}
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="border-b pb-2 mb-2 overflow-hidden"
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <img
-                    src={getRandomAvatar()}
-                    alt="Avatar"
-                    className="w-8 h-8 rounded-full"
-                  />
-                  <p className="font-semibold">{comment.user}</p>
-                </div>
-                <p className="text-gray-700">{comment.text}</p>
-                <Stars rating={comment.rating} />
-              </motion.div>
-            ))}
-        </AnimatePresence>
-        {shuffledComments.length > 3 && (
-          <button
-            className="text-blue-500 mt-2 hover:underline"
-            onClick={() => setShowAllComments(!showAllComments)}
-          >
-            {showAllComments ? "Show Less" : "Show All"}
-          </button>
-        )}
-      </div> */}
       <div className="bg-white rounded-lg shadow-lg p-6 w-full mt-6">
         <h2 className="text-2xl font-semibold mb-4">Customer Reviews</h2>
         <AnimatePresence>
