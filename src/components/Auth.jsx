@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { initializeApp, getApp, getApps } from "firebase/app";
-
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -24,7 +23,6 @@ import {
 } from "react-icons/fa";
 import bgAuth from "../assets/bgAuth.jpg";
 
-// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyD9RnuJ18udUh_JkIxd9xGvx9mPwVxIOcc",
   authDomain: "carsrent-2233e.firebaseapp.com",
@@ -35,8 +33,7 @@ const firebaseConfig = {
   measurementId: "G-D9CTQFJ429",
 };
 
-// Инициализация Firebase (проверка, не инициализирован ли он уже)
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApp(); // Если Firebase не инициализирован, то инициализируем его
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
@@ -47,14 +44,50 @@ const Auth = () => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+
   const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
-  // Регистрация через email и пароль
+  const validateForm = () => {
+    let valid = true;
+
+    setEmailError(false);
+    setPasswordError(false);
+
+    if (!email) {
+      setError("Email is required.");
+      setEmailError(true);
+      valid = false;
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        setError("Please enter a valid email address.");
+        setEmailError(true);
+        valid = false;
+      }
+    }
+
+    if (!password) {
+      setError("You must fill in all fields.");
+      setPasswordError(true);
+      valid = false;
+    } else if (password.length < 6) {
+      setError("Password must be at least 6 characters long.");
+      setPasswordError(true);
+      valid = false;
+    }
+
+    return valid;
+  };
+
   const register = async () => {
+    if (!validateForm()) return;
+
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
@@ -69,8 +102,9 @@ const Auth = () => {
     }
   };
 
-  // Логин через email и пароль
   const login = async () => {
+    if (!validateForm()) return;
+
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
@@ -85,31 +119,26 @@ const Auth = () => {
     }
   };
 
-  // Логин через Google
   const loginWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
-      const user = result.user;
-      setUser(user);
+      setUser(result.user);
       navigate("/home");
     } catch (error) {
       setError(error.message);
     }
   };
 
-  // Логин через GitHub
   const loginWithGithub = async () => {
     try {
       const result = await signInWithPopup(auth, githubProvider);
-      const user = result.user;
-      setUser(user);
+      setUser(result.user);
       navigate("/home");
     } catch (error) {
       setError(error.message);
     }
   };
 
-  // Логаут
   const logout = async () => {
     await signOut(auth);
     setUser(null);
@@ -138,7 +167,7 @@ const Auth = () => {
       </div>
 
       <div className="bg-gray-400 p-8 rounded-2xl shadow-lg w-96 text-center relative">
-        <h2 className="text-3xl font-bold text-amber-950 mb-4 ">MORENT</h2>
+        <h2 className="text-3xl font-bold text-amber-950 mb-4">MORENT</h2>
         {user ? (
           <div>
             <div className="flex items-center justify-center mb-4">
@@ -163,7 +192,9 @@ const Auth = () => {
                 placeholder="Email ID"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-2 border rounded-lg"
+                className={`w-full px-4 py-2 border rounded-lg ${
+                  emailError ? "border-red-500" : "border-gray-300"
+                }`}
               />
             </div>
             <div className="flex items-center mb-4 relative">
@@ -173,7 +204,9 @@ const Auth = () => {
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-2 border rounded-lg pr-10"
+                className={`w-full px-4 py-2 border rounded-lg pr-10 ${
+                  passwordError ? "border-red-500" : "border-gray-300"
+                }`}
               />
               <button
                 type="button"
@@ -183,6 +216,7 @@ const Auth = () => {
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
+
             <button
               onClick={login}
               className="w-full bg-indigo-500 text-white px-4 py-2 rounded-lg mb-2 flex items-center justify-center transition duration-300 ease-in-out transform hover:scale-105 hover:bg-indigo-600"
@@ -196,13 +230,7 @@ const Auth = () => {
               <FaUserPlus className="mr-2" /> Register
             </button>
 
-            {error && (
-              <p className="text-red-500 mt-2">
-                {error.includes("auth/email-already-in-use")
-                  ? "This email address is already registered. Try logging in."
-                  : error}
-              </p>
-            )}
+            {error && <p className="text-red-500 mt-2 text-sm">{error}</p>}
           </div>
         )}
 

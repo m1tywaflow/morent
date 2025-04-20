@@ -21,6 +21,7 @@ import HowItWorks from "./pages/HowItWorks";
 import Events from "./pages/Events";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Help from "./pages/Help";
+import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 function Layout({ children }) {
   const location = useLocation();
@@ -84,6 +85,7 @@ function App() {
           <Route path="/events" element={<Events />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/help" element={<Help />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
     </BrowserRouter>

@@ -134,7 +134,7 @@ const PrivacyPolicy = () => {
         </h3>
         <p className="text-lg text-gray-700 mb-4 ">
           If you have any questions about this Privacy Policy or wish to
-          exercise your rights, please contact us at: 
+          exercise your rights, please contact us at:
           <br />
           <a href="/contact" className="text-blue-600 underline ">
             Contact Us
