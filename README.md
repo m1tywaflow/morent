@@ -47,7 +47,7 @@ The project was built from scratch with a focus on real-world business logic, us
 🚀 Live Demo
 
 🔗 Live: [Click](https://morent-psi.vercel.app/)
-🔗 Repository: this repository
+🔗 Repository: [Click](https://github.com/m1tywaflow/morent)
 
 ⸻
 
