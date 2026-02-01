@@ -59,7 +59,22 @@ The project was built from scratch with a focus on real-world business logic, us
  • Improving UX and responsiveness based on design requirements
 
  ______
+  ## 🧩 Architecture Notes
 
+This project was built as a learning experience. Some architectural decisions could be improved.
+
+If I were starting this project today, I would:
+- Better separate business logic from UI components
+- Extract reusable logic into custom hooks
+- Introduce clearer folder structure for features
+- Improve state management and data flow
+- Add more consistent error handling
+
+This project helped me understand common architectural mistakes and how to avoid them in future projects.
+
+
+
+ ______
 
 ## 🚀 Installation and Running the Project
 
